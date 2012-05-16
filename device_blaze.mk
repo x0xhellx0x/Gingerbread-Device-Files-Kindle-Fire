@@ -3,15 +3,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/amazon/blaze/blaze-vendor.mk)
+$(call inherit-product-if-exists, vendor/amazon/otter/otter-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/amazon/blaze/overlay
+DEVICE_PACKAGE_OVERLAYS += device/amazon/otter/overlay
 
 PRODUCT_COPY_FILES += \
-    device/amazon/blaze/root/init.omap4430.rc:root/init.omap4430.rc \
-    device/amazon/blaze/root/ueventd.omap4430.rc:root/ueventd.omap4430.rc \
-    device/amazon/blaze/root/ueventd.rc:root/ueventd.rc \
-    device/amazon/blaze/root/init.rc:root/init.rc \
+    device/amazon/otter/root/init.omap4430.rc:root/init.omap4430.rc \
+    device/amazon/otter/root/ueventd.omap4430.rc:root/ueventd.omap4430.rc \
+    device/amazon/otter/root/ueventd.rc:root/ueventd.rc \
+    device/amazon/otter/root/init.rc:root/init.rc \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/misc/vold.fstab:system/etc/vold.fstab
@@ -72,7 +72,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=131072
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/amazon/blaze/kernel
+	LOCAL_KERNEL := device/amazon/otter/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -98,8 +98,8 @@ hwui.render_dirty_regions=false \
 $(call inherit-product, build/target/product/full_base.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := cm_blaze
-PRODUCT_DEVICE := blaze
+PRODUCT_NAME := cm_otter
+PRODUCT_DEVICE := otter
 
 $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product-if-exists, vendor/cm/config/common_full_tablet_wifionly.mk)
